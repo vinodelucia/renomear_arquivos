@@ -1,0 +1,19 @@
+import pandas as pd
+import os
+
+print(os.getcwd())
+os.chdir('C:\\Users\\Correção\\Pictures\\100CANON')
+df = pd.read_excel('nomes_arquivos.xlsx', sheet_name='Sheet1')
+
+# Pega o caminho da pasta onde estão os arquivos
+folder_path = 'C:\\Users\\Correção\\Pictures\\100CANON'
+
+
+# Loop para renomear cada arquivo
+for i, row in df.iterrows():
+    old_filename = str(row['Nome antigo'])
+    new_filename = str(row['Novo nome'])
+    os.rename(os.path.join(folder_path, old_filename), os.path.join(folder_path, new_filename))
+
+
+print('Renomeação concluída com sucesso!')
